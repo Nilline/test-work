@@ -642,8 +642,17 @@ textarea.input {
 .dashboard {
   background-color: #fff;
   box-shadow: 0rem 0.625rem 3.75rem rgba(226, 236, 249, 0.5);
-  border-radius: 1.875rem;
   padding: 1.875rem 0;
+}
+@media (min-width: 29.99875em) {
+  .dashboard {
+    border-radius: 1.875rem;
+  }
+}
+@media (max-width: 29.99875em) {
+  .dashboard {
+    border-radius: 1.25rem;
+  }
 }
 .dashboard__top {
   letter-spacing: -0.01em;
@@ -814,15 +823,11 @@ textarea.input {
 
 .main-dashboard {
   letter-spacing: -0.01em;
-}
-@media (min-width: 61.99875em) {
-  .main-dashboard {
-    overflow: hidden;
-  }
+  overflow: hidden;
 }
 @media (max-width: 61.99875em) {
   .main-dashboard {
-    overflow: auto;
+    border-top: 1px solid #eee;
   }
 }
 .main-dashboard__row {
@@ -839,12 +844,13 @@ textarea.input {
 }
 @media (max-width: 61.99875em) {
   .main-dashboard__row {
-    grid-template-columns: 7.465625rem 6.221875rem 7.465625rem 11.82125rem 6.221875rem 6.495rem;
+    grid-template-columns: 1fr;
+    row-gap: 0.625rem;
   }
 }
-.main-dashboard__row::before {
+.main-dashboard__row::after {
   content: "";
-  background-color: #eeeeee;
+  background-color: #eee;
   position: absolute;
   bottom: 0;
   left: 50%;
@@ -854,8 +860,24 @@ textarea.input {
 .main-dashboard__row:not(.main-dashboard__row_label) {
   padding: 1.25rem 0;
 }
-.main-dashboard__row:not(.main-dashboard__row_label)::before {
+.main-dashboard__row:not(.main-dashboard__row_label)::after {
   width: 100%;
+}
+@media (max-width: 61.99875em) {
+  .main-dashboard__row:not(.main-dashboard__row_label) > span {
+    display: flex;
+    align-items: center;
+    column-gap: 1.25rem;
+    justify-content: space-between;
+  }
+  .main-dashboard__row:not(.main-dashboard__row_label) > span::before {
+    content: attr(data-title);
+    color: #b5b7c0;
+    white-space: nowrap;
+  }
+  .main-dashboard__row:not(.main-dashboard__row_label) > span:not(.main-dashboard__status_active) {
+    text-align: right;
+  }
 }
 .main-dashboard__row_label {
   padding: 0 0 0.875rem;
@@ -864,8 +886,13 @@ textarea.input {
 .main-dashboard__row_label > *:last-child {
   padding-right: 0.8125rem;
 }
-.main-dashboard__row_label::before {
+.main-dashboard__row_label::after {
   width: 100vw;
+}
+@media (max-width: 61.99875em) {
+  .main-dashboard__row_label {
+    display: none;
+  }
 }
 .main-dashboard__status {
   text-align: center;

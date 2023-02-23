@@ -1,7 +1,7 @@
 (() => {
     "use strict";
-    const iconOpenMenu = document.getElementById("icon-menu");
-    if (iconOpenMenu) iconOpenMenu.addEventListener("click", (e => {
-        document.documentElement.classList.toggle("menu-open");
-    }));
+    document.addEventListener("click", documentActions);
+    function documentActions(e) {
+        if (e.target.closest("#icon-menu") || !e.target.closest("#aside")) document.documentElement.classList.toggle("menu-open");
+    }
 })();
